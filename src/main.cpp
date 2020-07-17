@@ -372,7 +372,7 @@ int neo4all_load_bios(void)
 	// Load BIOS
 	FILE *fp;
 	do {
-		sprintf(file, "%s/neocd.bin", neo4all_image_dir);
+		/*sprintf(file, "%s/neocd.bin", neo4all_image_dir);
 		fp = fopen(file, "rb");
 		if (fp) break;
 
@@ -384,11 +384,13 @@ int neo4all_load_bios(void)
 
 		fp = fopen(ROM_PREFIX "/neocd.bin","rb");
 		if (fp) break;
-
+                 console_println();
+		console_printf("NDA ENV: %s\n", getenv("HOME"));
 		sprintf(file, "%s/.neo4all/neocd.bin", getenv("HOME"));
-		if (fp) break;
+		if (fp) break;*/
 
-		fp = fopen("neocd.bin", "rb");
+		//fp = fopen("neocd.bin", "rb");
+		fp = fopen("/media/data/local/home/neocd.bin", "rb");
 		if (fp) break;
 	} while(0);
 
@@ -872,6 +874,7 @@ void neogeo_adjust_cycles(int new_68k, int new_z80)
 #else
 
 static char *_autodir_="CHANGE IT:" ROM_PREFIX  "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
+static char
 
 char *autodir=(char *)&_autodir_[10];
 

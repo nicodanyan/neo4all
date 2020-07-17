@@ -1,0 +1,11 @@
+[Desktop Entry]
+Name=neo4all
+Comment=Neo Geo CD Emulator
+Exec=neo4all.dge %f
+Icon=neo4all
+Categories=emulators;
+X-OD-Filter=.iso,.img,.bin
+X-OD-Manual=neo4all.man.txt
+Terminal=false
+Type=Application
+StartupNotify=true
