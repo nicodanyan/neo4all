@@ -372,6 +372,7 @@ int neo4all_load_bios(void)
 	// Load BIOS
 	FILE *fp;
 	do {
+#ifndef RG350
 		/*sprintf(file, "%s/neocd.bin", neo4all_image_dir);
 		fp = fopen(file, "rb");
 		if (fp) break;
@@ -389,8 +390,10 @@ int neo4all_load_bios(void)
 		sprintf(file, "%s/.neo4all/neocd.bin", getenv("HOME"));
 		if (fp) break;*/
 
-		//fp = fopen("neocd.bin", "rb");
-		fp = fopen("/media/data/local/home/neocd.bin", "rb");
+		fp = fopen("neocd.bin", "rb");
+#else
+		fp = fopen("/media/data/local/home/.neo4all/neocd.bin", "rb");
+#endif //!RG350
 		if (fp) break;
 	} while(0);
 
@@ -874,7 +877,6 @@ void neogeo_adjust_cycles(int new_68k, int new_z80)
 #else
 
 static char *_autodir_="CHANGE IT:" ROM_PREFIX  "\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0\0";
-static char
 
 char *autodir=(char *)&_autodir_[10];
 
