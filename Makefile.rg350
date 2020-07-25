@@ -13,7 +13,7 @@ include config.mk
 
 TARGET   = neo4all/neo4all.dge
 
-DEFAULT_CFLAGS = $(SDL_CFLAGS) -D_GNU_SOURCE=1 -D_REENTRANT -DDINGUX -DDINGOO -DRETROFW -DLOWERCASEFILES -DDATA_PREFIX=\"data/\" -DROM_PREFIX=\"roms\" -DMEMCARD_PREFIX=\"/tmp/\"
+DEFAULT_CFLAGS = $(SDL_CFLAGS) -D_GNU_SOURCE=1 -D_REENTRANT -DDINGUX -DDINGOO -DRETROFW -DRG350 -DLOWERCASEFILES -DDATA_PREFIX=\"data/\" -DROM_PREFIX=\"roms\" -DMEMCARD_PREFIX=\"/tmp/\"
 
 LDFLAGS = $(SDL_LIBS) -lSDL -lSDL_mixer -lSDL_image -lz -lpthread -lm
 #-s -static
@@ -30,7 +30,7 @@ MORE_CFLAGS += -fomit-frame-pointer -fno-builtin -fno-exceptions -fno-common
 MORE_CFLAGS += -fstrict-aliasing  -fexpensive-optimizations -fno-rtti
 MORE_CFLAGS += -finline -finline-functions -fpeel-loops
 
-MORE_CFLAGS += -O3 -mips32 -mtune=mips32 -mno-mips16 -mno-shared -mbranch-likely -pipe
+MORE_CFLAGS += -O3 -mips32r2 -mtune=mips32r2 -mno-mips16 -mno-shared -mbranch-likely -pipe
 
 CFLAGS  = $(DEFAULT_CFLAGS) $(NEO4ALL_CFLAGS) $(MORE_CFLAGS)
 CPPFLAGS = $(CFLAGS)
