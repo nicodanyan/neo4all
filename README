@@ -6,6 +6,7 @@ for Dingoo under Dingoo Linux (Dingux). It started life as NeoGeo home emulator 
 and has now been ported to the Dingoo. Additonal details about this project can be found
 at http://chui.dcemu.co.uk/neo4all.html
 
+Moreover, it has now been ported to RG350 handhelds with the creation of neo4all opk file.
 
 2. INSTALLATION
  ------------
@@ -14,12 +15,15 @@ Unzip the zip file, and copy the content of the
 directory game to your SD card.
 
 Also needs a NeoGeo CD-ROM Bios image file named as 'neocd.bin' at same place than 'neo4all.dge' binary.
+For RG350 handhelds, it should be located in: /media/data/local/home/.neo4all/neocd.bin
 
 
 3. USAGE
  ------------
 
 Choose NeoGeo CD-ROM disk image (ISOs) at filemanager. Supports ISO/TOC, BIN/CUE, CCD, MDS and SUB image types. But not supports CDDA tracks for now.
+
+It can be launched in command line when the opk is called with the required rom path.
 
 
 4. DEFAULT CONTROLS

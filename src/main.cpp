@@ -373,7 +373,7 @@ int neo4all_load_bios(void)
 	FILE *fp;
 	do {
 #ifndef RG350
-		/*sprintf(file, "%s/neocd.bin", neo4all_image_dir);
+		sprintf(file, "%s/neocd.bin", neo4all_image_dir);
 		fp = fopen(file, "rb");
 		if (fp) break;
 
@@ -388,10 +388,11 @@ int neo4all_load_bios(void)
                  console_println();
 		console_printf("NDA ENV: %s\n", getenv("HOME"));
 		sprintf(file, "%s/.neo4all/neocd.bin", getenv("HOME"));
-		if (fp) break;*/
+		if (fp) break;
 
 		fp = fopen("neocd.bin", "rb");
 #else
+		// For RG350 handhelds, this is where it should be located
 		fp = fopen("/media/data/local/home/.neo4all/neocd.bin", "rb");
 #endif //!RG350
 		if (fp) break;

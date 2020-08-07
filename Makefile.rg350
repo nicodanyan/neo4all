@@ -1,3 +1,4 @@
+NEO4ALL_OPK_NAME := neo4all_rg350.opk
 CHAINPREFIX := /opt/gcw0-toolchain
 CROSS_COMPILE := $(CHAINPREFIX)/usr/bin/mipsel-gcw0-linux-uclibc-
 
@@ -50,5 +51,5 @@ opk: all
 	neo4all/neo4all.png \
 	neo4all/neo4all.man.txt \
 	neo4all/data \
-	neo4all/neo4all.opk \
+	neo4all/$(NEO4ALL_OPK_NAME) \
 	-all-root -noappend -no-exports -no-xattrs

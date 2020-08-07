@@ -6,6 +6,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <SDL.h>
+
 #include "../neo4all.h"
 
 #include "../menu/menu.h"
@@ -56,7 +57,6 @@ extern int menu_moving;
 
 #define SPECIAL 0x01000000
 
-
 /*--------------------------------------------------------------------------*/
 Uint32 keys   =~0;
 Uint32 keyup  [SDLK_LAST];
@@ -75,6 +75,7 @@ static int input_initted=0;
 
 extern SDLKey menuControl_bt0[];
 extern SDLKey menuControl_bt1[];
+
 
 #ifdef AES
 static int input_back_aes_system=-1234;
@@ -483,7 +484,8 @@ INPUT_STATIC_INLINE void keyDown (SDLKey key) {
 
 
 INPUT_STATIC_INLINE void keyUp (SDLKey key) {
-    if(!(keyup[key]&SPECIAL)) {
+    	if(!(keyup[key]&SPECIAL)) {
+
 #ifdef DINGOO
 	if (!pulsando_escape)
 #endif
@@ -491,8 +493,7 @@ INPUT_STATIC_INLINE void keyUp (SDLKey key) {
     }
 #ifdef DINGOO
     else
-	    if (key==SDLK_ESCAPE)
-		    pulsando_escape=0;
+	    if (key==SDLK_ESCAPE) pulsando_escape=0;
 #endif
     pulsando_menu=0;
 }
@@ -526,8 +527,22 @@ void processEvents(void) {
     update_coin();
     while(SDL_PollEvent(&event)) {
         switch(event.type) {
-            case SDL_KEYDOWN: keyDown(event.key.keysym.sym); break;
-            case SDL_KEYUP:   keyUp(event.key.keysym.sym); break;
+            case SDL_KEYDOWN: 
+#ifdef RG350
+                // If Power button is pressing we launch the menu
+                if (event.key.keysym.sym==SDLK_HOME) {
+                    pulsando_menu = 1;
+                    pulsando_escape = 1;
+                    goMenu();
+                    } else {
+                        keyDown(event.key.keysym.sym);
+                }
+#else
+                keyDown(event.key.keysym.sym);
+#endif //RG350
+                
+                break;
+            case SDL_KEYUP: keyUp(event.key.keysym.sym); break;
             case SDL_JOYBUTTONDOWN: joyDown(event.jbutton.which, event.jbutton.button); break;
             case SDL_JOYBUTTONUP:   joyUp(event.jbutton.which, event.jbutton.button); break;
             case SDL_JOYAXISMOTION: joyMotion(event.jaxis.which, event.jaxis.axis, event.jaxis.value);
